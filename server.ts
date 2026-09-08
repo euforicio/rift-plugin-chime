@@ -1,4 +1,4 @@
-import { defineRpcContract, type BbPluginApi } from "@get-bb/plugin-sdk";
+import { defineRpcContract, type RiftPluginApi } from "@riftlabs/plugin-sdk";
 import { z } from "zod";
 import {
   EVENT_KINDS,
@@ -44,11 +44,11 @@ export const rpcContract = defineRpcContract({
   },
 });
 
-async function loadConfig(bb: BbPluginApi): Promise<ChimeConfig> {
+async function loadConfig(bb: RiftPluginApi): Promise<ChimeConfig> {
   return normalizeConfig(await bb.storage.kv.get<Partial<ChimeConfig>>("config"));
 }
 
-export default async function plugin(bb: BbPluginApi) {
+export default async function plugin(bb: RiftPluginApi) {
   const broker = new EventBroker();
   const seenInteractionsByThread = new Map<string, Set<string>>();
   const scanningThreads = new Set<string>();

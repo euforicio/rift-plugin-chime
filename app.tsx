@@ -1,5 +1,5 @@
 import { useEffect, useState, type ReactNode } from "react";
-import { definePluginApp, useRpc } from "@get-bb/plugin-sdk/app";
+import { definePluginApp, useRpc } from "@riftlabs/plugin-sdk/app";
 import type { rpcContract } from "./server";
 import {
   DEFAULT_CONFIG,

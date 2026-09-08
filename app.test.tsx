@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 import { fireEvent } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { loadPluginApp, renderSlot } from "@get-bb/plugin-sdk/testing/app";
+import { loadPluginApp, renderSlot } from "@riftlabs/plugin-sdk/testing/app";
 import { DEFAULT_CONFIG } from "./domain";
 
 describe("Chime settings UI", () => {

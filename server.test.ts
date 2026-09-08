@@ -1,11 +1,11 @@
 import { describe, expect, it, vi } from "vitest";
-import { createFakePluginHost, makeThreadResponse } from "@get-bb/plugin-sdk/testing";
+import { createFakePluginHost, makeThreadResponse } from "@riftlabs/plugin-sdk/testing";
 import plugin from "./server";
 import { SOUND_IDS } from "./domain";
 
 describe("Chime backend", () => {
   it("serves every themed sound as a WAV asset", async () => {
-    const { bb, harness } = createFakePluginHost({
+    const { rift: bb, harness } = createFakePluginHost({
       pluginId: "chime",
       sdk: { subscribe: () => () => {} },
     });
@@ -20,7 +20,7 @@ describe("Chime backend", () => {
   });
 
   it("publishes lifecycle events without message content", async () => {
-    const { bb, harness } = createFakePluginHost({
+    const { rift: bb, harness } = createFakePluginHost({
       pluginId: "chime",
       sdk: {
         subscribe: () => () => {},
@@ -53,7 +53,7 @@ describe("Chime backend", () => {
   });
 
   it("honours muted projects before queueing", async () => {
-    const { bb, harness } = createFakePluginHost({
+    const { rift: bb, harness } = createFakePluginHost({
       pluginId: "chime",
       sdk: { subscribe: () => () => {} },
     });
@@ -91,7 +91,7 @@ describe("Chime backend", () => {
       payload: { kind: "user_question" },
     }];
     const thread = makeThreadResponse({ id: "thread-1", projectId: "project-1" });
-    const { bb, harness } = createFakePluginHost({
+    const { rift: bb, harness } = createFakePluginHost({
       pluginId: "chime",
       sdk: {
         subscribe: ((args: { callback: typeof changed }) => {
